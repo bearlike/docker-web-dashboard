@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <meta name="generator" content="Hugo 0.20" />
+    <title>Kry-Dev Cluster</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/slate.css">
+    <style>
+        .head {
+            color: #ffffff;
+        }
+        
+        .head-h1 {
+            margin-bottom: 0em!important;
+            text-shadow: 4px 4px 4px #000000;
+        }
+        
+        .tile-container {
+            margin-top: 2em;
+        }
+    </style>
+</head>
+
+<body style='background: #161616;' data-backgrounds='bg/b1920-000.jpg,bg/b1920-001.jpg,bg/b1920-002.jpg,bg/b1920-003.jpg,bg/b1920-004.jpg,'>
+
+    <div class="nav-panel">
+        <nav>
+            <ul>
+                <li class="tag"><a data-tooltip="all" href="#"><i class="icon fa fa-th" aria-hidden="true"></i></a></li>
+                <li class="tag"><a data-tooltip="favorites" href="#favorite"><i class="icon fa fa-star" aria-hidden="true"></i></a></li>
+                <li class="tag"><a href="https://thekrishna.in/"><i class="icon fa fa-user" aria-hidden="true"></i></a></li>
+                <!-- <li class="tag"><a data-tooltip="shopping" href="#shopping"><i class="icon fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                <li class="tag"><a data-tooltip="music" href="#music"><i class="icon fa fa-headphones" aria-hidden="true"></i></a></li>
+                <li class="tag"><a data-tooltip="video" href="#video"><i class="icon fa fa-video-camera" aria-hidden="true"></i></a></li> -->
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="container">
+        <h1 class="head head-h1">Kry Development Cluster</h1>
+        <p class="head"><mark>All interactions are logged. Exit if you're not authorized.<br>[Currently in Beta]</mark></p>
+        <div class="tile-container">
+
+            <a class="tile tile-link" href="http://kry-raspi4.local:9000/" data-groups='favorite,docker' target="_blank">
+                <div class="tile-box" data-title='portainer' data-bg-color='#13BEF9' data-url='http://kry-raspi4.local:9000/' data-img='logos/portainer.svg'>
+                    <img class="logo" src="logos/portainer.svg"></img>
+                </div>
+                <div class="tile-title">Portainer</div>
+            </a>
+
+            <a class="tile tile-link" href="http://192.168.1.29/admin/" data-groups='favorite,network' target="_blank">
+                <div class="tile-box" data-title='pihole' data-url='http://192.168.1.29/admin/' data-bg-color='#191414' data-txt-color='#ff9900' data-img='logos/pihole.svg'>
+                    <img class="logo" src="logos/pihole.svg"></img>
+                </div>
+                <div class="tile-title">Pi-Hole</div>
+            </a>
+
+
+            <a class="tile tile-link" href="http://192.168.1.29:8080/" data-groups='favorite,data' target="_blank">
+                <div class="tile-box" data-title='nextcloud' data-url='http://192.168.1.29:8080/' data-bg-color='#ffffff' data-txt-color='#ffffff' data-img='logos/nextcloud.svg'>
+                    <img class="logo" src="logos/nextcloud.svg"></img>
+                </div>
+                <div class="tile-title">Nextcloud</div>
+            </a>
+
+            <a class="tile tile-link" href="http://192.168.1.16:8080/" data-groups='' target="_blank">
+                <div class="tile-box" data-title='phpmyadmin' data-url='http://192.168.1.16:8080/' data-bg-color='#000000' data-txt-color='#ffffff' data-img='logos/phpmyadmin.svg'>
+                    <img class="logo" src="logos/phpmyadmin.svg"></img>
+                </div>
+                <div class="tile-title">phpMyAdmin</div>
+            </a>
+
+            <a class="tile tile-link" href="http://dev.thekrishna.in:81/" data-groups='favorite,music' target="_blank">
+                <div class="tile-box" data-title='service-remote' data-url='http://dev.thekrishna.in:81/' data-bg-color='#ffffff ' data-txt-color='#1db954' data-img='logos/service-remote.svg'>
+                    <img class="logo" src="logos/service-remote.svg"></img>
+                </div>
+                <div class="tile-title">Service Remote</div>
+            </a>
+
+            <a class="tile tile-link" href="http://192.168.1.16:3000/login" data-groups='music' target="_blank">
+                <div class="tile-box" data-title='grafana' data-url='http://192.168.1.16:3000/login' data-bg-color='#191414' data-txt-color='#ff5722' data-img='logos/grafana.svg'>
+                    <img class="logo" src="logos/grafana.svg"></img>
+                </div>
+                <div class="tile-title">Grafana</div>
+            </a>
+
+            <a class="tile tile-link" href="http://192.168.1.16:10000/lab" data-groups='music' target="_blank">
+                <div class="tile-box" data-title='jupyter' data-url='http://192.168.1.16:10000/lab' data-bg-color='#ffffff' data-txt-color='#ff5722' data-img='logos/jupyter.svg'>
+                    <img class="logo" src="logos/jupyter.svg"></img>
+                </div>
+                <div class="tile-title">Jupyter Lab</div>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+<link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+<script src="js/slate.js"></script>
+
+</html>
