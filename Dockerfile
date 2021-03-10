@@ -1,4 +1,6 @@
 FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
+LABEL maintainer="Krishnakanth Alagiri <krishna.alagiri03@gmail.com>"
+
 RUN apk --update add bash nano
 COPY requirements.txt /tmp/
 
