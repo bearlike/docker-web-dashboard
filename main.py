@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os
+from os import getenv
 from flask import Flask, request, render_template, send_from_directory
 
 app = Flask(__name__)
@@ -9,7 +9,8 @@ secrets = {}
 @app.route('/', methods=["GET"])
 def single_dash():
     """ The main dashboard """
-    return render_template('index.html.j2')
+    OWNER_URL = getenv("OWNER_URL", "https://thekrishna.in/")
+    return render_template('index.html.j2', OWNER_URL=OWNER_URL)
 
 
 @app.route('/favicon.ico')
