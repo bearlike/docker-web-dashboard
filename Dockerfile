@@ -13,4 +13,9 @@ COPY ./ /app
 
 # Owner site
 ENV OWNER_URL "https://thekrishna.in/"
+
+# Default Credentials
+ENV DASH_USERNAME "admin"
+ENV DASH_PASSWORD "admin"
+
 EXPOSE 80
