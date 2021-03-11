@@ -2,9 +2,9 @@
  A speed dial for your server
 
  ## Getting Started
+ Execute `build-run.sh` to automatically build and deploy the container. Default Username is `admin` and Password is `admin`.
  ```bash
  git clone https://github.com/bearlike/docker-web-dashboard.git
  cd docker-web-dashboard
- docker build -t krishna/docker-system-dash .
- docker run -d -t --name cluster-dash-dev01 -p 26689:80 krishna/docker-system-dash
+ bash build-run.sh
  ```
