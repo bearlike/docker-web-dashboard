@@ -1,0 +1,58 @@
+[
+  {
+    "groups": "favorite,docker",
+    "title": "Portainer",
+    "bg-color": "#13BEF9",
+    "url": "http://kry-raspi4.local:9000/",
+    "img": "portainer.svg",
+    "txt-color": "#ff9900"
+  },
+  {
+    "groups": "favorite,network",
+    "title": "Pi-Hole",
+    "url": "http://192.168.1.29/admin/",
+    "bg-color": "#191414",
+    "txt-color": "#ff9900",
+    "img": "pihole.svg"
+  },
+  {
+    "groups": "favorite,data",
+    "title": "Nextcloud",
+    "url": "http://192.168.1.29:8080/",
+    "bg-color": "#ffffff",
+    "txt-color": "#ffffff",
+    "img": "nextcloud.svg"
+  },
+  {
+    "groups": "data",
+    "title": "phpMyAdmin",
+    "url": "http://192.168.1.16:8080/",
+    "bg-color": "#000000",
+    "txt-color": "#ffffff",
+    "img": "phpmyadmin.svg"
+  },
+  {
+    "groups": "favorite,dev",
+    "title": "Service Remote",
+    "url": "http://dev.thekrishna.in:81/",
+    "txt-color": "#1db954",
+    "img": "service-remote.svg",
+    "bg-color": "#191414"
+  },
+  {
+    "groups": "dev",
+    "title": "Grafana",
+    "url": "http://192.168.1.16:3000/login",
+    "bg-color": "#191414",
+    "txt-color": "#ff5722",
+    "img": "grafana.svg"
+  },
+  {
+    "groups": "dev",
+    "title": "Jupyter",
+    "url": "http://192.168.1.16:10000/lab",
+    "bg-color": "#ffffff",
+    "txt-color": "#ff5722",
+    "img": "jupyter.svg"
+  }
+]

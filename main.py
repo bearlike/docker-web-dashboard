@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+from database import Connection
 from os import getenv, path
 from flask import Flask, request, render_template, send_from_directory, redirect, url_for
 
 app = Flask(__name__)
+db = Connection(app, host="192.168.1.16")
 DASH_USERNAME = getenv("DASH_USERNAME", "admin")
 DASH_PASSWORD = getenv("DASH_PASSWORD", "admin")
 OWNER_URL = getenv("OWNER_URL", "https://thekrishna.in/")
@@ -28,7 +30,8 @@ def single_dash():
     if is_auth is False:
         return redirect(url_for('login', error=True))
     else:
-        return render_template('dash.html.j2', OWNER_URL=OWNER_URL)
+        data = db.get_sites()
+        return render_template('dash.html.j2', DASH=data, OWNER_URL=OWNER_URL)
 
 
 @app.route('/', methods=["GET"])
