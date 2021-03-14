@@ -40,56 +40,14 @@
         <p class="head"><mark>All interactions are logged. Exit if you're not authorized.<br>[Currently in Beta]</mark></p>
         <div class="tile-container">
 
-            <a class="tile tile-link" href="http://kry-raspi4.local:9000/" data-groups='favorite,docker' target="_blank">
-                <div class="tile-box" data-title='portainer' data-bg-color='#13BEF9' data-url='http://kry-raspi4.local:9000/' data-img='/static/logos/portainer.svg'>
-                    <img class="logo" src="/static/logos/portainer.svg"></img>
+            {% for iter in DASH %}
+            <a class="tile tile-link" href="{{ iter["url"] }}" data-groups='{{ iter["groups"] }}' target="_blank">
+                <div class="tile-box" data-title='{{ iter["title"] }}' data-bg-color='{{ iter["bg-color"] }}' data-url='{{ iter["url"] }}' data-img='/static/logos/{{ iter["img"] }}'>
+                    <img class="logo" src="/static/logos/{{ iter["img"] }}"></img>
                 </div>
-                <div class="tile-title">Portainer</div>
+                <div class="tile-title">{{ iter["title"] }}</div>
             </a>
-
-            <a class="tile tile-link" href="http://192.168.1.29/admin/" data-groups='favorite,network' target="_blank">
-                <div class="tile-box" data-title='pihole' data-url='http://192.168.1.29/admin/' data-bg-color='#191414' data-txt-color='#ff9900' data-img='/static/logos/pihole.svg'>
-                    <img class="logo" src="/static/logos/pihole.svg"></img>
-                </div>
-                <div class="tile-title">Pi-Hole</div>
-            </a>
-
-
-            <a class="tile tile-link" href="http://192.168.1.29:8080/" data-groups='favorite,data' target="_blank">
-                <div class="tile-box" data-title='nextcloud' data-url='http://192.168.1.29:8080/' data-bg-color='#ffffff' data-txt-color='#ffffff' data-img='/static/logos/nextcloud.svg'>
-                    <img class="logo" src="/static/logos/nextcloud.svg"></img>
-                </div>
-                <div class="tile-title">Nextcloud</div>
-            </a>
-
-            <a class="tile tile-link" href="http://192.168.1.16:8080/" data-groups='' target="_blank">
-                <div class="tile-box" data-title='phpmyadmin' data-url='http://192.168.1.16:8080/' data-bg-color='#000000' data-txt-color='#ffffff' data-img='/static/logos/phpmyadmin.svg'>
-                    <img class="logo" src="/static/logos/phpmyadmin.svg"></img>
-                </div>
-                <div class="tile-title">phpMyAdmin</div>
-            </a>
-
-            <a class="tile tile-link" href="http://dev.thekrishna.in:81/" data-groups='favorite,music' target="_blank">
-                <div class="tile-box" data-title='service-remote' data-url='http://dev.thekrishna.in:81/' data-bg-color='#ffffff ' data-txt-color='#1db954' data-img='/static/logos/service-remote.svg'>
-                    <img class="logo" src="/static/logos/service-remote.svg"></img>
-                </div>
-                <div class="tile-title">Service Remote</div>
-            </a>
-
-            <a class="tile tile-link" href="http://192.168.1.16:3000/login" data-groups='music' target="_blank">
-                <div class="tile-box" data-title='grafana' data-url='http://192.168.1.16:3000/login' data-bg-color='#191414' data-txt-color='#ff5722' data-img='/static/logos/grafana.svg'>
-                    <img class="logo" src="/static/logos/grafana.svg"></img>
-                </div>
-                <div class="tile-title">Grafana</div>
-            </a>
-
-            <a class="tile tile-link" href="http://192.168.1.16:10000/lab" data-groups='music' target="_blank">
-                <div class="tile-box" data-title='jupyter' data-url='http://192.168.1.16:10000/lab' data-bg-color='#ffffff' data-txt-color='#ff5722' data-img='/static/logos/jupyter.svg'>
-                    <img class="logo" src="/static/logos/jupyter.svg"></img>
-                </div>
-                <div class="tile-title">Jupyter Lab</div>
-            </a>
-
+            {% endfor %}
         </div>
 
     </div>

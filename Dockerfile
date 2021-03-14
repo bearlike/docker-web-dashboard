@@ -1,11 +1,20 @@
 FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
 LABEL maintainer="Krishnakanth Alagiri <krishna.alagiri03@gmail.com>"
 
-RUN apk --update add bash nano
+RUN apk --update add bash nano && \
+    apk add --no-cache mongodb
+
+# upgrade pip and install supervisor (release date: Feb 27, 2021)
+RUN pip install -U pip && \ 
+    pip install supervisor==4.2.2 && \
+    mkdir -p /var/log/supervisor && \
+    mkdir -p /etc/supervisor/conf.d
+
+VOLUME /data/db
+
 COPY requirements.txt /tmp/
 
-# upgrade pip and install required python packages
-RUN pip install -U pip
+# install required python packages
 RUN pip install -r /tmp/requirements.txt
 
 # copy over our app code
@@ -19,3 +28,9 @@ ENV DASH_USERNAME "admin"
 ENV DASH_PASSWORD "admin"
 
 EXPOSE 80
+
+# supervisor base configuration
+ADD supervisor.conf /etc/supervisor.conf
+
+# default command
+CMD ["supervisord", "-c", "/etc/supervisor.conf"]
