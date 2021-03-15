@@ -13,10 +13,8 @@ secrets = {}
 
 def validate_login(username=None, password=None):
     """ Validate Credentials """
-    if username == DASH_USERNAME and password == DASH_PASSWORD:
-        return True
-    else:
-        return False  # False if Invalid Credentials
+    # False if Invalid Credentials
+    return bool(username == DASH_USERNAME and password == DASH_PASSWORD)
 
 
 @app.route('/dashboard', methods=["GET", "POST"])
@@ -29,9 +27,8 @@ def single_dash():
         is_auth = validate_login(username, password)
     if is_auth is False:
         return redirect(url_for('login', error=True))
-    else:
-        data = db.get_sites()
-        return render_template('dash.html.j2', DASH=data, OWNER_URL=OWNER_URL)
+    data = db.get_sites()
+    return render_template('dash.html.j2', DASH=data, OWNER_URL=OWNER_URL)
 
 
 @app.route('/', methods=["GET"])
