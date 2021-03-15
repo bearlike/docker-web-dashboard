@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 # All Database connectors are here. Just call and run.
 import pymongo
-from datetime import datetime
-import bcrypt
+# from datetime import datetime
 import json
+
 
 class Connection:
     """A connection to the database."""
@@ -15,14 +15,14 @@ class Connection:
         self.speed_dial = self.db['speed_dial']
 
     # Message functions
-    def get_sites(self, max=25):
+    def get_sites(self, max_sites=25):
         """Retrieves the sites from a chatroom."""
-        results = self.speed_dial.find({}, limit=max)  # Get the sites
+        results = self.speed_dial.find({}, limit=max_sites)  # Get the sites
         # Sort by date in ascending order by Title
         results = results.sort('title', pymongo.ASCENDING)
         return list(results)
-        
-    def add_message(self, groups, title, bg_color, url, img):
+
+    def add_site(self, groups, title, bg_color, url, img):
         """Adds a message to the database."""
         if self.speed_dial.count_documents({'url': url}) == 0:
             message = {
@@ -34,10 +34,8 @@ class Connection:
             }
             self.speed_dial.insert_one(message)
             return True  # Insertion was successful
-        else:
-            self.app.logger.warning(
-                'Bookmark Already Exist: %s', url)
-            return False  # Insertion was unsuccessful
+        self.app.logger.warning('Bookmark Already Exist: %s', url)
+        return False  # Insertion was unsuccessful
 
     def load_json_to_db(self, json_path):
         # Loading or Opening the json file
