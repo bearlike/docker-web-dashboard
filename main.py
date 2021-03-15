@@ -4,7 +4,8 @@ from os import getenv, path
 from flask import Flask, request, render_template, send_from_directory, redirect, url_for
 
 app = Flask(__name__)
-db = Connection(app, host="192.168.1.16")
+
+
 DASH_USERNAME = getenv("DASH_USERNAME", "admin")
 DASH_PASSWORD = getenv("DASH_PASSWORD", "admin")
 OWNER_URL = getenv("OWNER_URL", "https://thekrishna.in/")
@@ -17,9 +18,17 @@ def validate_login(username=None, password=None):
     return bool(username == DASH_USERNAME and password == DASH_PASSWORD)
 
 
+@app.route('/add-site', methods=["GET", "POST"])
+def add_site():
+    """ Add new site form """
+    # db = Connection(app)
+    return render_template('add-site.html.j2')
+
+
 @app.route('/dashboard', methods=["GET", "POST"])
 def single_dash():
     """ The main dashboard """
+    db = Connection(app)
     is_auth = False
     if request.method == 'POST':
         username = request.form['username']

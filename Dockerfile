@@ -1,7 +1,8 @@
 FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
 LABEL maintainer="Krishnakanth Alagiri <krishna.alagiri03@gmail.com>"
 
-RUN apk add --no-cache "mongodb~=3.4.10"
+RUN apk --update add bash nano && \
+    apk add --no-cache "mongodb~=3.4.10"
 
 # upgrade pip and install supervisor (release date: Feb 27, 2021)
 RUN pip install supervisor==4.2.2 && \
