@@ -24,7 +24,7 @@
     <div id="form_container">
 
         <h1><a>Add a New Site</a></h1>
-        <form id="form_19260" class="appnitro" enctype="multipart/form-data" method="post" action="">
+        <form action="/form/add-site" id="form_19260" class="appnitro" enctype="multipart/form-data" method="post">
             <div class="form_description">
                 <h2>Add a New Site</h2>
                 <p></p>
@@ -34,7 +34,7 @@
                 <li id="li_1">
                     <label class="description" for="element_1">Application Name </label>
                     <div>
-                        <input id="element_1" name="app_title" class="element text medium" type="text" maxlength="255" value="" />
+                        <input id="element_1" name="app_title" class="element text medium" type="text" maxlength="255" value="" required />
                     </div>
                 </li>
                 <li id="li_2">
@@ -47,25 +47,25 @@
                 <li id="li_3">
                     <label class="description" for="element_3">Application URL </label>
                     <div>
-                        <input id="element_3" name="app_url" class="element text medium" type="text" maxlength="255" value="http://" />
+                        <input id="element_3" name="app_url" class="element text medium" type="text" maxlength="255" value="http://" required />
                     </div>
                 </li>
                 <li id="li_5">
                     <label class="description" for="element_5">Groups (Seperate by commas) </label>
                     <div>
-                        <input id="element_5" name="groups" class="element text medium" type="text" maxlength="255" value="" />
+                        <input id="element_5" name="groups" class="element text medium" type="text" maxlength="255" value="" required />
                     </div>
                 </li>
                 <li id="li_4">
                     <label class="description" for="element_4">Upload the logo </label>
                     <div>
-                        <input id="element_4" name="logo_file" class="element file" type="file" />
+                        <input id="element_4" name="file" class="element file" type="file" accept=".svg,.gif,.jpg,.jpeg,.png" required />
                     </div>
                 </li>
 
                 <li class="buttons">
                     <input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
-                    <a href="https://google.com/"><input class="button_text" type="button" name="Go Back" value="Go Back" /></a>
+                    <a href="/dashboard"><input class="button_text" type="button" name="Go Back" value="Go Back" /></a>
                 </li>
             </ul>
         </form>

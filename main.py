@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
+from flask import Flask, redirect, request, render_template, send_from_directory, \
+    session, url_for
 from database import Connection
 from os import getenv, path
-from flask import Flask, request, render_template, send_from_directory, redirect, url_for
+from werkzeug.utils import secure_filename
+import uuid
+
 
 app = Flask(__name__)
+app.secret_key = 'C#hMq5w#52NaM@Nz'
 
 
 DASH_USERNAME = getenv("DASH_USERNAME", "admin")
@@ -18,6 +23,26 @@ def validate_login(username=None, password=None):
     return bool(username == DASH_USERNAME and password == DASH_PASSWORD)
 
 
+@app.route('/form/add-site', methods=["POST"])
+def form_add_site():
+    """ Handle Add POST """
+    db = Connection(app)
+    #db = Connection(app, host="kry-server.local")
+    if request.method == 'POST':
+        # Form Variables
+        app_title = request.form['app_title']
+        colour_hex = request.form['colour_hex']
+        app_url = request.form['app_url']
+        groups = request.form['groups']
+        # File Handling
+        f = request.files['file']
+        new_filename = secure_filename(
+            str(uuid.uuid4()) + "." + f.filename.split(".")[1])
+        f.save(path.join("static/logos", new_filename))
+        db.add_site(groups, app_title, colour_hex, app_url, new_filename)
+        return redirect(url_for('add_site', success=True))
+
+
 @app.route('/add-site', methods=["GET", "POST"])
 def add_site():
     """ Add new site form """
@@ -29,13 +54,20 @@ def add_site():
 def single_dash():
     """ The main dashboard """
     db = Connection(app)
+    # db = Connection(app, host="kry-server.local")
     is_auth = False
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         is_auth = validate_login(username, password)
+    elif 'dash_username' in session and 'dash_password' in session:
+        username = session['dash_username']
+        password = session['dash_password']
+        is_auth = validate_login(username, password)
     if is_auth is False:
         return redirect(url_for('login', error=True))
+    session['dash_username'] = username
+    session['dash_password'] = password
     data = db.get_sites()
     return render_template('dash.html.j2', DASH=data, OWNER_URL=OWNER_URL)
 
@@ -43,6 +75,8 @@ def single_dash():
 @app.route('/', methods=["GET"])
 def login():
     """ Login Page """
+    session.pop('dash_username', None)
+    session.pop('dash_password', None)
     error = request.args.get('error')
     return render_template('login.html.j2', error=error)
 
