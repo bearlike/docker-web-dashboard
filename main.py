@@ -26,8 +26,10 @@ def validate_login(username=None, password=None):
 @app.route('/form/add-site', methods=["POST"])
 def form_add_site():
     """ Handle Add POST """
+    status = False
     db = Connection(app)
-    #db = Connection(app, host="kry-server.local")
+    # During Testing
+    # db = Connection(app, host="kry-server.local")
     if request.method == 'POST':
         # Form Variables
         app_title = request.form['app_title']
@@ -40,7 +42,8 @@ def form_add_site():
             str(uuid.uuid4()) + "." + f.filename.split(".")[1])
         f.save(path.join("static/logos", new_filename))
         db.add_site(groups, app_title, colour_hex, app_url, new_filename)
-        return redirect(url_for('add_site', success=True))
+        status = True
+    return redirect(url_for('add_site', success=status))
 
 
 @app.route('/add-site', methods=["GET", "POST"])
@@ -84,8 +87,11 @@ def login():
 @app.route('/favicon.ico')
 def favicon():
     """ Send Favicon to Clients """
-    return send_from_directory(path.join(app.root_path, 'static'), 
-        'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(
+        path.join(app.root_path, 'static'),
+        'favicon.ico',
+        mimetype='image/vnd.microsoft.icon'
+    )
 
 
 @app.errorhandler(404)
@@ -95,5 +101,5 @@ def not_found(e):
 
 
 if __name__ == '__main__':
-    print("\n","="*8,"\n")
+    print("\n", "="*8, "\n")
     app.run(host='127.0.0.1', port=8081, debug=True)
