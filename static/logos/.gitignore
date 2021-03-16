@@ -1,0 +1,7 @@
+# All Images except defaults will be ignored (new uploads)
+*.png
+*.jpeg
+*.jpg
+*.png
+*.svg
+*.gif

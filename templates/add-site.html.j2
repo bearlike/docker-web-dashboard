@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">   
+    <title>Add a New Site</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/view.css" media="all">
+    <script type="text/javascript" src="/static/js/view.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico">
+	<style>
+        body {
+            background-color: #333300;
+        }
+		.color {
+			padding: .5em;
+			margin-right: .4em;
+			border: 1px solid #aaa;
+			border-radius: 3px;
+			width: 140px;
+		}
+        .isa_info, .isa_success, .isa_warning, .isa_error {
+            margin: 10px 0px;
+            padding:12px;
+        }
+        .isa_info {
+            color: #00529B;
+            background-color: #BDE5F8;
+        }
+        .isa_success {
+            color: #4F8A10;
+            background-color: #DFF2BF;
+        }
+        .isa_warning {
+            color: #9F6000;
+            background-color: #FEEFB3;
+        }
+        .isa_error {
+            color: #D8000C;
+            background-color: #FFD2D2;
+        }
+        .isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+            margin:10px 22px;
+            font-size:2em;
+            vertical-align:middle;
+        }
+	</style>
+</head>
+
+<body style="background: url(/static/img/bg/b1920-001.jpg) 0% 0% / cover;" id="main_body">
+
+    <img id="top" src="top.png" alt="">
+    <div id="form_container">
+
+        <h1><a>Add a New Site</a></h1>
+        <form action="/form/add-site" id="form_19260" class="appnitro" enctype="multipart/form-data" method="post">
+            <div class="form_description">
+                <h2>Add a New Site</h2>
+                <p></p>
+            </div>
+            <ul>
+
+                <li id="li_1">
+                    <label class="description" for="element_1">Application Name </label>
+                    <div>
+                        <input id="element_1" name="app_title" class="element text medium" type="text" maxlength="255" value="" required />
+                    </div>
+                </li>
+                <li id="li_2">
+                    <label class="description" for="element_2">Background Colour (Hex) </label>
+                    <div>
+						<input id="element_2" name="colour_hex" class="color" value="#FFFFFF" data-colormode="HEX" style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">
+                    </div>
+                    <p class="guidelines" id="guide_2"><small>Use the Colour Picker.</small></p>
+                </li>
+                <li id="li_3">
+                    <label class="description" for="element_3">Application URL </label>
+                    <div>
+                        <input id="element_3" name="app_url" class="element text medium" type="text" maxlength="255" value="http://" required />
+                    </div>
+                </li>
+                <li id="li_5">
+                    <label class="description" for="element_5">Groups (Seperate by commas) </label>
+                    <div>
+                        <input id="element_5" name="groups" class="element text medium" type="text" maxlength="255" value="" required />
+                    </div>
+                </li>
+                <li id="li_4">
+                    <label class="description" for="element_4">Upload the logo </label>
+                    <div>
+                        <input id="element_4" name="file" class="element file" type="file" accept=".svg,.gif,.jpg,.jpeg,.png" required />
+                    </div>
+                </li>
+
+                <li class="buttons">
+                    <input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+                    <a href="/dashboard"><input class="button_text" type="button" name="Go Back" value="Go Back" /></a>
+                </li>
+            </ul>
+        </form>
+        <div id="footer">
+        {% if success %}
+            <div class="isa_success">
+                Successfully Added New Site
+            </div>
+        {% endif %}
+        </div>
+    </div>
+    <img id="bottom" src="bottom.png" alt="" />
+	<script type="text/javascript" src="/static/js/colors.js"></script>
+	<script type="text/javascript" src="/static/js/colorPicker.data.js"></script>
+	<script type="text/javascript" src="/static/js/colorPicker.js"></script>
+	<script type="text/javascript" src="/static/js/jsColor.js"></script>
+	<script type="text/javascript">
+		var colors = jsColorPicker('input.color', {
+				customBG: '#222',
+				readOnly: true,
+				// patch: false,
+				init: function(elm, colors) { // colors is a different instance (not connected to colorPicker)
+					elm.style.backgroundColor = elm.value;
+					elm.style.color = colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd';
+				},
+				// appendTo: document.querySelector('.samples')
+			});
+	</script>	
+</body>
+
+
+
+</html>

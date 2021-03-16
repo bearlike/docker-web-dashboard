@@ -17,7 +17,29 @@
         .tile-container {
             margin-top: 2em;
         }
+
+        .add-new {
+            height: 120px;
+            max-height: 120px;
+            width: 188px;
+            max-width: 188px;
+            border-radius: 2px;
+            box-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 2px 8px rgb(0 0 0 / 20%);
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.6);
+            font-size: 28px;
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            outline:2px dotted #fff; 
+            outline-offset: -3px;
+        }
+
+        .add-new:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
 </head>
 
 <body style='background: #161616;' data-backgrounds='/static/img/bg/b1920-000.jpg,/static/img/bg/b1920-001.jpg,/static/img/bg/b1920-002.jpg,/static/img/bg/b1920-003.jpg,/static/img/bg/b1920-004.jpg,'>
@@ -48,8 +70,14 @@
                 <div class="tile-title">{{ iter["title"] }}</div>
             </a>
             {% endfor %}
+            
+            <a class="tile tile-link" href="/add-site" target="_blank">
+                <div class="add-new">
+                    <img class="logo" src="/static/img/plus.svg"></img>
+                </div>
+                <div class="tile-title"></div>
+            </a>
         </div>
-
     </div>
 
 </body>
