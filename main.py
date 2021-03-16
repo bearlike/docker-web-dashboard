@@ -44,10 +44,10 @@ def form_add_site():
 
 
 @app.route('/add-site', methods=["GET", "POST"])
-def add_site():
+def add_site(success=False):
     """ Add new site form """
-    # db = Connection(app)
-    return render_template('add-site.html.j2')
+    success = request.args.get('success')
+    return render_template('add-site.html.j2', success=success)
 
 
 @app.route('/dashboard', methods=["GET", "POST"])
@@ -84,7 +84,8 @@ def login():
 @app.route('/favicon.ico')
 def favicon():
     """ Send Favicon to Clients """
-    return send_from_directory(path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(path.join(app.root_path, 'static'), 
+        'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.errorhandler(404)
@@ -94,5 +95,5 @@ def not_found(e):
 
 
 if __name__ == '__main__':
-    print("\n=============\n")
+    print("\n","="*8,"\n")
     app.run(host='127.0.0.1', port=8081, debug=True)

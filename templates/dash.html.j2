@@ -39,6 +39,7 @@
             background: rgba(0, 0, 0, 0.9);
         }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
 </head>
 
 <body style='background: #161616;' data-backgrounds='/static/img/bg/b1920-000.jpg,/static/img/bg/b1920-001.jpg,/static/img/bg/b1920-002.jpg,/static/img/bg/b1920-003.jpg,/static/img/bg/b1920-004.jpg,'>
@@ -69,17 +70,14 @@
                 <div class="tile-title">{{ iter["title"] }}</div>
             </a>
             {% endfor %}
-
+            
             <a class="tile tile-link" href="/add-site" target="_blank">
                 <div class="add-new">
                     <img class="logo" src="/static/img/plus.svg"></img>
                 </div>
                 <div class="tile-title"></div>
             </a>
-
-
         </div>
-
     </div>
 
 </body>
