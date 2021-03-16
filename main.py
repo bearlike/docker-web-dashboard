@@ -89,7 +89,7 @@ def favicon():
     """ Send Favicon to Clients """
     return send_from_directory(
         path.join(app.root_path, 'static'),
-        'favicon.ico', 
+        'favicon.ico',
         mimetype='image/vnd.microsoft.icon'
     )
 
