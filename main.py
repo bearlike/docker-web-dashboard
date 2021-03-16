@@ -29,7 +29,7 @@ def form_add_site():
     status = False
     db = Connection(app)
     # During Testing
-    # db = Connection(app, host="kry-server.local") 
+    # db = Connection(app, host="kry-server.local")
     if request.method == 'POST':
         # Form Variables
         app_title = request.form['app_title']
@@ -88,7 +88,7 @@ def login():
 def favicon():
     """ Send Favicon to Clients """
     return send_from_directory(path.join(app.root_path, 'static'),
-                            'favicon.ico', mimetype='image/vnd.microsoft.icon')
+        'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.errorhandler(404)
