@@ -87,8 +87,11 @@ def login():
 @app.route('/favicon.ico')
 def favicon():
     """ Send Favicon to Clients """
-    return send_from_directory(path.join(app.root_path, 'static'),
-        'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(
+        path.join(app.root_path, 'static'),
+        'favicon.ico', 
+        mimetype='image/vnd.microsoft.icon'
+    )
 
 
 @app.errorhandler(404)
